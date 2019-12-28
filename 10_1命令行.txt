@@ -1,0 +1,24 @@
+cd G:\code_of_zengjie\DeepLearningCodeOfXiaoJie\BugReportDeduplicate
+G:
+python ./10_doc2vec_sim.py ./processedData_2014MSR_xiaojie/textForTakeLab_to_eclipse_5000_1_4_train_random.txt ./processedData_2014MSR_xiaojie/0/textForTakeLab_to_eclipse_5000_1_4_train_random.txt.doc2vecSimilarity
+
+cd G:\code_of_zengjie\DeepLearningCodeOfXiaoJie\BugReportDeduplicate
+G:
+python ./10_doc2vec_sim.py ./processedData_2014MSR_xiaojie/textForTakeLab_to_eclipse_5000_1_4_train_random_test.txt ./processedData_2014MSR_xiaojie/1/textForTakeLab_to_eclipse_5000_1_4_train_random_test.txt.doc2vecSimilarity
+
+
+cd G:\code_of_zengjie\DeepLearningCodeOfXiaoJie\BugReportDeduplicate
+G:
+python ./10_doc2vec_sim.py ./processedData_2014MSR_xiaojie/textForTakeLab_to_netBeans_5000_1_4_train_random.txt ./processedData_2014MSR_xiaojie/2/textForTakeLab_to_netBeans_5000_1_4_train_random.txt.doc2vecSimilarity
+
+cd G:\code_of_zengjie\DeepLearningCodeOfXiaoJie\BugReportDeduplicate
+G:
+python ./10_doc2vec_sim.py ./processedData_2014MSR_xiaojie/textForTakeLab_to_netBeans_5000_1_4_train_random_test.txt ./processedData_2014MSR_xiaojie/3/textForTakeLab_to_netBeans_5000_1_4_train_random_test.txt.doc2vecSimilarity
+
+cd G:\code_of_zengjie\DeepLearningCodeOfXiaoJie\BugReportDeduplicate
+G:
+python ./10_doc2vec_sim.py ./processedData_2014MSR_xiaojie/textForTakeLab_to_openOffice_5000_1_4_train_random.txt ./processedData_2014MSR_xiaojie/4/textForTakeLab_to_openOffice_5000_1_4_train_random.txt.doc2vecSimilarity
+
+cd G:\code_of_zengjie\DeepLearningCodeOfXiaoJie\BugReportDeduplicate
+G:
+python ./10_doc2vec_sim.py ./processedData_2014MSR_xiaojie/textForTakeLab_to_openOffice_5000_1_4_train_random_test.txt ./processedData_2014MSR_xiaojie/5/textForTakeLab_to_openOffice_5000_1_4_train_random_test.txt.doc2vecSimilarity
