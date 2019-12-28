@@ -1,34 +1,48 @@
-# BugReportDeduplicate
-重复缺陷报告检测
-
 一、处理数据并获取TC特征文件。即2014年MSR会议上论文所用方法。
 
 1）下载2014年MSR会议上的重复缺陷报告检测数据集http://alazar.people.ysu.edu/msr14data/，并使用Studio 3T导入数据库。
+
 2）运行1_operateOn14MSRDataMongo_xiaojie.py，对数据进行划分，并生成能够被TakeLab处理的文件。TakeLab地址见：http://takelab.fer.hr/
+
 3）运行2_generateOtherFeaturesAndTag.py生成Categorical特征（即来源于缺陷报告分类属性的特征，简称CO特征），同时生成标签数据。
+
 4）运行3_脚本.bat文件。即将2）生成的文件交由TakeLab处理，获取to(TakeLab Only)特征下的相应文件
+
 bat文件中的部分代码摘出如下。takelab必须在python2.7版本下运行（除了这个，其余程序在python3版本下运行）。
+
 python takelab_simple_features_xiaojieModify.py G:\code_of_zengjie\DeepLearningCodeOfXiaoJie\BugReportDeduplicate\processedData_2014MSR_xiaojie\textForTakeLab_to_eclipse_5000_1_4_train_random.txt G:\code_of_zengjie\DeepLearningCodeOfXiaoJie\BugReportDeduplicate\processedData_2014MSR_xiaojie\takelab_only\to_eclipse_5000_1_4_train_random.txt G:\code_of_zengjie\DeepLearningCodeOfXiaoJie\BugReportDeduplicate\processedData_2014MSR_xiaojie\gs_eclipse_5000_1_4_train_random.txt
+
 5）运行3_combineOtherFeaturesAndTag.py获取CO特征文件，含标签（Categorical-only）
+
 6）合并Takelab特征和OtherFeatures，获取tc（takelab_categorical_combined）特征下的相应文件。运行4_combineOtherFeaturesAndTakeLabFeaturesAndTag.py
+
 7）获取全部数据集的特征文件等信息。运行5_getThreeProjectsComplete.py
+
 8）利用SVM-scale进行特征的归一化。运行5_1Categorical特征归一化.bat。
+
 9）将归一化后的全集文件再拆分为训练集和测试集。运行 5_2chaifenScaledOtherFeaturesCompleteToTrainAndTest.py
+
 
 二、融合文本分布式表示的检测方法。即将Doc2Vec模型计算向量的相似度作为一种新的特征融入传统特征，得到DTC特征文件
 
 1）运行10_getTrainDataSetForDoc2Vec.py文件。建立缺陷id与文本段落编号之间的映射关系，存入一个字典，并且生成一个用于训练Doc2Vec模型的文本。
-2）运行10_1_training_doc2vec.py.文件训练Doc2Vec模型
-3）运行10_3_calculateDoc2VecFeatures.py文件生成分布式表示。
-4）运行12_1_produceDatasetWithDoc2vecFeaturesAndOtherFeatures_new.py文件，生成Doc2Vec向量相似性特征，同时与其它特征融合到了一起。
 
+2）运行10_1_training_doc2vec.py.文件训练Doc2Vec模型
+
+3）运行10_3_calculateDoc2VecFeatures.py文件生成分布式表示。
+
+4）运行12_1_produceDatasetWithDoc2vecFeaturesAndOtherFeatures_new.py文件，生成Doc2Vec向量相似性特征，同时与其它特征融合到了一起。
 
 三、分别针对TC特征文件和DTC特征文件进行训练和测试。
 
 1）运行13_a_将libsvm格式数据转化为csv格式.py文件，将libsvm格式转化为csv格式。
+
 2）运行13_决策树算法.py、13_随机森林算法.py、13_朴素贝叶斯.py、13_nearest_neighbor.py等分别得出结果
+
 3)  对于支持向量机模型。则使用12_网格搜索确定最优参数_LinearSVM_doc2vec特征以及融合其它特征.bat文件（等）进行网格搜索最佳参数。
+
 4）然后将最佳参数填入12_Doc2VecTakeLabCategoricalFeaturesTrainAndPredict_gridSearch_run_LinearSVM.bat文件（等），然后进行模型的最终训练和测试。
+
 5）支持向量机模型的结果，可以通过6_computeTPR_et_al_on_svmOutput.py文件进行计算。
 
 
